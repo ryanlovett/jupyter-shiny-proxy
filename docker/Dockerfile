@@ -38,8 +38,6 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-se
 COPY install-miniconda.bash /tmp/install-miniconda.bash
 RUN /tmp/install-miniconda.bash
 
-RUN install -d -o $NB_USER /var/lib/shiny-server/bookmarks
-
 USER ${NB_USER}
 
 RUN pip install --no-cache-dir \
