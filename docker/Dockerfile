@@ -43,7 +43,9 @@ RUN install -d -o $NB_USER /var/lib/shiny-server/bookmarks
 USER ${NB_USER}
 
 RUN pip install --no-cache-dir \
-		notebook>=6 \
+		"notebook>=6" \
 		git+https://github.com/ryanlovett/jupyter-shiny-proxy
 
 COPY --chown=${NB_USER} app app
+
+CMD jupyter notebook --ip=*
