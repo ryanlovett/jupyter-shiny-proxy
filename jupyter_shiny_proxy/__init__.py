@@ -15,6 +15,7 @@ def setup_shiny():
                 location / {{
                     site_dir {site_dir};
                     log_dir {site_dir}/logs;
+                    bookmark_state_dir {site_dir}/bookmarks;
                     directory_index on;
                 }}
             }}
