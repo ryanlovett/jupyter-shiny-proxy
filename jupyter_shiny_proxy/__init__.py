@@ -34,6 +34,7 @@ def setup_shiny():
         'command': _get_shiny_cmd,
         'launcher_entry': {
             'title': 'Shiny',
-            'icon_path': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons', 'shiny.svg')
+            'icon_path': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons', 'shiny.svg'),
+            'timeout': 20,
         }
     }
