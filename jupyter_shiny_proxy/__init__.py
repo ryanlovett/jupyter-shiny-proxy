@@ -25,7 +25,7 @@ class JupyterShinyProxy(Configurable):
 
 
 def setup_shiny():
-    '''Manage a Shiny instance.'''
+    """Manage a Shiny instance."""
 
     def create_directory(directory_path):
         path = Path(directory_path)
@@ -34,9 +34,9 @@ def setup_shiny():
         except Exception as e:
             pass
 
-
     def _get_shiny_cmd(port):
-        conf = dedent("""
+        conf = dedent(
+            """
             run_as {user};
             preserve_logs true;
             server {{
@@ -48,23 +48,18 @@ def setup_shiny():
                     directory_index on;
                 }}
             }}
-        """).format(
-            user=getpass.getuser(),
-            port=str(port),
-            site_dir=shiny_config.site_dir
-        )
+        """
+        ).format(user=getpass.getuser(), port=str(port), site_dir=shiny_config.site_dir)
 
-        f = tempfile.NamedTemporaryFile(mode='w', delete=False)
+        f = tempfile.NamedTemporaryFile(mode="w", delete=False)
         f.write(conf)
         f.close()
-        return ['shiny-server', f.name]
-
+        return ["shiny-server", f.name]
 
     def get_icon_path():
         return Path(__file__).parent.resolve() / "icons" / "shiny.svg"
 
-
-    name = 'shiny'
+    name = "shiny"
     config = get_config()
 
     shiny_config = JupyterShinyProxy(config=config)
@@ -72,10 +67,10 @@ def setup_shiny():
     create_directory(shiny_config.site_dir)
 
     return {
-        'command': _get_shiny_cmd,
-        'launcher_entry': {
-            'title': 'Shiny',
+        "command": _get_shiny_cmd,
+        "launcher_entry": {
+            "title": "Shiny",
             "icon_path": get_icon_path(),
-            'timeout': shiny_config.timeout,
-        }
+            "timeout": shiny_config.timeout,
+        },
     }
