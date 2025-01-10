@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="jupyter-shiny-proxy",
-    version='1.2',
+    version="1.3",
     url="https://github.com/ryanlovett/jupyter-shiny-proxy",
     author="Ryan Lovett & Yuvi Panda",
     description="Jupyter extension to proxy Shiny Server",
