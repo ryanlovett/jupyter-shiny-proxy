@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyter-shiny-proxy"
+version = "1.4"
+description = "Jupyter extension to proxy Shiny Server"
+authors = [
+  { name = "Ryan Lovett", email = "rylo@berkeley.edu" },
+  { name = "Yuvi Panda", email = "yuvipanda@gmail.com" },
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+keywords = ["Jupyter"]
+classifiers = [
+    "Framework :: Jupyter",
+]
+dependencies = [
+    "jupyter-server-proxy",
+    "traitlets"
+]
+
+[project.urls]
+Homepage = "https://github.com/ryanlovett/jupyter-shiny-proxy"
+
+[project.entry-points."jupyter_serverproxy_servers"]
+shiny = "jupyter_shiny_proxy:setup_shiny"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jupyter_shiny_proxy"]
