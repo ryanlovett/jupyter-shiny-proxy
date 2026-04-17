@@ -70,7 +70,7 @@ def setup_shiny():
         "command": _get_shiny_cmd,
         "launcher_entry": {
             "title": "Shiny",
-            "icon_path": get_icon_path(),
+            "icon_path": str(get_icon_path()),
             "timeout": shiny_config.timeout,
         },
     }
